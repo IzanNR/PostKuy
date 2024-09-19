@@ -6,6 +6,11 @@
     <title>IMHO - User Profile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Background gradient behind the card */
+        body {
+            background: linear-gradient(to bottom right, #b0b0b0, #d0e4f7);
+            min-height: 100vh;
+        }
         .profile-card {
             margin-bottom: 20px;
         }

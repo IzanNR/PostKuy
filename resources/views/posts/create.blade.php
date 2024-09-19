@@ -6,33 +6,74 @@
     <title>Create Post - IMHO!</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+        /* Background gradient behind the card */
+        body {
+            background: linear-gradient(to bottom right, #b0b0b0, #d0e4f7);
+            min-height: 100vh;
         }
-        .content {
-            margin-top: 80px; /* Adjust content to account for fixed navbar */
+        /* Card shadow and spacing */
+        .card {
+            margin-top: 80px; /* Keeping the original margin for navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding shadow to the card */
         }
-        .form-card {
-            margin-top: 40px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .vote-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        .vote-button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 18px;
+        }
+        .vote-count {
+            margin: 0 10px;
+        }
+        /* Custom styles for comments */
+        .comment {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .comment-text {
+            margin-top: 5px;
+        }
+        /* Adjust button styles */
+        .btn-primary {
+            margin-top: 10px;
+        }
+        /* Adjust fixed button styles */
         .fixed-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 999;
         }
+        /* Custom search bar in the navbar */
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .navbar-search input {
+            margin-left: 10px;
+            margin-right: 10px;
+            max-width: 200px;
+        }
+        /* Custom content styles */
+        .container {
+            margin-top: 90px; /* Adjust for fixed navbar */
+        }
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <!-- Fixed Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="{{ url('/') }}">IMHO!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,9 +84,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/home') }}">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/posts') }}">Posts</a>
+                </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/users/' . Auth::user()->id) }}">Profile ({{ Auth::user()->name }})</a>
+                        <a class="nav-link" href="{{ url('/users/' . Auth::user()->username) }}">Profile ({{ Auth::user()->name }})</a>
                     </li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST" class="d-inline">

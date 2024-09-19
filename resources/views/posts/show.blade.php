@@ -6,6 +6,11 @@
     <title>IMHO - {{ $post->title }}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Background gradient behind the card */
+        body {
+            background: linear-gradient(to bottom right, #b0b0b0, #d0e4f7); /* Blue to black gradient */
+            min-height: 100vh;
+        }
         .post-detail {
             margin-top: 80px; /* Adjusted for navbar height */
         }

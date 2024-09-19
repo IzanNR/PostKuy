@@ -6,30 +6,74 @@
     <title>IMHO - Register</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Fixed Navbar */
-        .navbar {
+        /* Background gradient behind the card */
+        body {
+            background: linear-gradient(to bottom right, #000428, #004e92); /* Blue to black gradient */
+            min-height: 90vh;
+        }
+        /* Card shadow and spacing */
+        .card {
+            margin-top: 80px; /* Keeping the original margin for navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding shadow to the card */
+        }
+        .vote-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vote-button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 18px;
+        }
+        .vote-count {
+            margin: 0 10px;
+        }
+        /* Custom styles for comments */
+        .comment {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .comment-text {
+            margin-top: 5px;
+        }
+        /* Adjust button styles */
+        .btn-primary {
+            margin-top: 10px;
+        }
+        /* Adjust fixed button styles */
+        .fixed-button {
             position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
         }
-        /* Adjust content margin to clear the navbar */
-        .content {
-            margin-top: 80px; /* Adjusted for navbar height */
+        /* Custom search bar in the navbar */
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
         }
-        .login-container {
-            max-width: 500px;
-            margin: 0 auto;
+        .navbar-search input {
+            margin-left: 10px;
+            margin-right: 10px;
+            max-width: 200px;
         }
-        .alert-danger {
-            margin-top: 20px;
+        /* Custom content styles */
+        .container {
+            margin-top: 90px; /* Adjust for fixed navbar */
+        }
+        .text-center {
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
     <!-- Fixed Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="{{ url('/') }}">IMHO!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +89,7 @@
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/users/' . Auth::user()->id) }}">Profile ({{ Auth::user()->name }})</a>
+                        <a class="nav-link" href="{{ url('/users/' . Auth::user()->username) }}">Profile ({{ Auth::user()->name }})</a>
                     </li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST" class="d-inline">

@@ -6,8 +6,15 @@
     <title>IMHO - Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .post-detail {
-            margin-top: 80px; /* Adjusted for navbar height */
+        /* Background gradient behind the card */
+        body {
+            background: linear-gradient(to bottom right, #000428, #004e92); /* Blue to black gradient */
+            min-height: 90vh;
+        }
+        /* Card shadow and spacing */
+        .card {
+            margin-top: 80px; /* Keeping the original margin for navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding shadow to the card */
         }
         .vote-buttons {
             display: flex;
@@ -54,12 +61,19 @@
             margin-right: 10px;
             max-width: 200px;
         }
+        /* Custom content styles */
+        .container {
+            margin-top: 90px; /* Adjust for fixed navbar */
+        }
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <!-- Fixed Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="{{ url('/') }}">IMHO!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -106,14 +120,20 @@
     <div class="container content">
         <div class="card mt-4">
             <div class="card-body">
-                <h1>What does the world think?</h1>
+                <h1 class="text-center">What does the world think?</h1>
+                <p class="text-center">Discover opinions from people around the globe on a variety of topics.</p>
                 
                 @auth
-                    <p>Welcome, {{ Auth::user()->name }}!</p>
-                    <a href="{{ url('/posts') }}" class="btn btn-primary">View Posts</a>
+                    <p class="text-center">Welcome, {{ Auth::user()->name }}! Ready to share your thoughts?</p>
+                    <div class="text-center">
+                        <a href="{{ url('/posts') }}" class="btn btn-primary">View Posts</a>
+                    </div>
                 @else
-                    <p><a href="{{ route('login') }}" class="btn btn-primary">Login</a></p>
-                    <p><a href="{{ route('register') }}" class="btn btn-primary">Register</a></p>
+                    <div class="text-center">
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                        <p class="mt-3">Don't have an account yet?</p>
+                        <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                    </div>
                 @endauth
             </div>
         </div>

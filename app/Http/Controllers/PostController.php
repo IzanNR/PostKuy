@@ -84,7 +84,8 @@ class PostController extends Controller
         return response()->json($post);
     }
 
-    public function destroyPost($id)
+    /*
+    public function destroypost($id)
     {
         $post = Post::find($id);
         if ($post) {
@@ -94,4 +95,5 @@ class PostController extends Controller
             return response()->json(['message' => 'Post not found'], 404);
         }
     }
+    */
 }

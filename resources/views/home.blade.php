@@ -74,7 +74,9 @@
 
     <!-- Fixed Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="{{ url('/') }}">IMHO!</a>
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('android-chrome-512x512.png') }}" alt="IMHO Logo" width="40" height="40">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -126,11 +128,13 @@
                 @auth
                     <p class="text-center">Welcome, {{ Auth::user()->name }}! Ready to share your thoughts?</p>
                     <div class="text-center">
+                        <a href="{{ route('posts.create') }}" class="btn btn-success">Post Your Opinion!</a>
+                        <br>
                         <a href="{{ url('/posts') }}" class="btn btn-primary">View Posts</a>
                     </div>
                 @else
                     <div class="text-center">
-                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                        <a href="{{ route('login') }}" class="btn btn-success">Post Your Opinion!</a>
                         <p class="mt-3">Don't have an account yet?</p>
                         <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
                     </div>
@@ -138,9 +142,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Fixed Button to Add Opinion -->
-    <a href="{{ route('posts.create') }}" class="btn btn-success fixed-button">Post Your Opinion!</a>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

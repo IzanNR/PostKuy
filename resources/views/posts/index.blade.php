@@ -70,8 +70,10 @@
 <body>
 
     <!-- Fixed Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url('/') }}">IMHO!</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('android-chrome-512x512.png') }}" alt="IMHO Logo" width="40" height="40">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -153,7 +155,10 @@
     </div>
 
     <!-- Fixed Button to Add Opinion -->
-    <a href="{{ route('posts.create') }}" class="btn btn-success fixed-button">Post Your Opinion!</a>
+    @auth
+        <a href="{{ route('posts.create') }}" class="btn btn-success fixed-button">Post Your Opinion!</a>
+    @endauth
+
 
     <script>
         function vote(postId, type) {

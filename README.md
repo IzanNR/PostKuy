@@ -30,4 +30,4 @@ PostKuy! is developed to facilitate easy sharing of posts, comments, and votes.
 ## Website
 
 Visit PostKuy! at [http://postkuy.kesug.com/](http://postkuy.kesug.com/)  
-(Note: The website may not always be active.)
+(Note: The website may not be active in the future.)
